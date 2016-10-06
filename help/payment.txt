@@ -1,0 +1,16 @@
+paymentstatus:
+
+1 = bedoone natije
+2 = movafagh
+3 = na movafagh
+4 = refnum tekrari ast
+
+
+
+
+transstatus:
+
+1 = anjam nashode
+2 = pardakht shode
+3 = na movafagh
+4 = hazf shode

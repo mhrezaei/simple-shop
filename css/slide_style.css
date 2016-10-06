@@ -1,0 +1,105 @@
+.slide {
+	width: 800px;
+	height: 230px;
+	padding-bottom: 25px;
+}
+#feature { 
+  	float:left;
+	width: 800px;
+	height: 230px;
+	position:relative;
+	clear:both;
+}
+#navi {
+	margin: 0 auto;
+	width: 120px;
+	height: 25px;
+}
+#navi ul {
+	margin:0 auto;
+	width: 95px;
+	padding-left: 60px;
+	height: 19px;
+	padding-top: 5px;
+	position:absolute;
+	top:205px;
+	background: url(../images/slider_control_bg.png) no-repeat center bottom;
+ 	
+}
+
+#navi li {	
+ 	float:left;
+ 	list-style-type:none;
+	text-align:center;
+	display:inline;
+}
+
+#navi a {
+	color:#333333;
+	display:block;
+	position:relative;
+	word-spacing:-2px;
+	font-size:11px;		
+	text-decoration:none;
+	-moz-opacity:.50;
+	filter:alpha(opacity=50);
+	opacity:.50; 
+}	
+
+#navi a.current {
+	 -moz-opacity:1;
+	filter:alpha(opacity=100);
+	opacity:1; 
+ 
+ }
+ 
+ #navi a:hover {
+	-moz-opacity:1;
+	filter:alpha(opacity=100);
+	opacity:1; 
+
+}
+
+#navi img {
+	margin: 0px;
+	display:block;
+	width: 12px;
+	height: 12px;
+	  
+}
+
+#navi strong {
+	display:block;		
+	font-size:13px;
+}
+
+/* panes */
+#panes {
+	height:230px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+	
+	/* must be relative so the individual panes can be absolutely positioned */
+	position:relative;
+	overflow:hidden;
+}
+
+/* crossfading effect needs absolute positioning from the elements */
+#panes div {
+	display:none;		
+	position:absolute;
+	font-size:13px;
+	color:#ede9e9;	
+	line-height:1.5;
+	overflow:hidden;
+	padding:0px 0px 0px 0px;
+	width: 800px;
+  }
+ 
+#panes img {
+	float: right;
+	margin:0px 0px 0px 0px;	
+	width: 800px;
+	height: 230px;
+}

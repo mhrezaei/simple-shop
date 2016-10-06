@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine On
+#RewriteBase /
+RewriteRule ^([^\.]+)$ $1.php
+RewriteCond %{SCRIPT_FILENAME} !-f
+</IfModule>
+
+
