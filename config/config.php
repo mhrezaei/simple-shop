@@ -23,7 +23,7 @@ else
 {
     $uri = 'http://' . $_SERVER['HTTP_HOST'];
 }
-$uri = $uri . '/safiran';
+$uri = $uri . '/shahrzad';
 ################## URI ##################
 
 
@@ -32,7 +32,7 @@ define('DB_PERSISTENCY', 'true');
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'safiran');
+define('DB_DATABASE', 'shahrzad');
 define('PDO_DSN', 'mysql:host=' . DB_SERVER . ';dbname=' . DB_DATABASE . ';charset=utf8;SET CHARACTER SET utf8');
 ################## Database Handler ##################
 
