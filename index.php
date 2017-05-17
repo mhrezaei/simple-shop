@@ -2,6 +2,8 @@
 include_once 'config/config.php';
 
 include 'header.php';
+
+$slideshow = DatabaseHandler::GetAll("SELECT * FROM `slideshow` LIMIT 5; ");
 //index
 if(isset($_GET['login']))
 {
@@ -25,6 +27,7 @@ if(isset($_GET['login']))
     });
  </script>
   <!-- Slider -->
+<?php if (count($slideshow)){ ?>
   <div class="up"></div>
   <div class="center">
     <div class="home-slider home-left-slider home-full-slider">
@@ -32,21 +35,22 @@ if(isset($_GET['login']))
         <div class="slide">
           <div id="feature">
             <div id="panes">
-              <div style="display: none;"> <img src="<?php echo $uri; ?>/images/banner1.png" /></div>
-              <div style="display: none;"> <img src="<?php echo $uri; ?>/images/banner2.png" /></div>
-              <div style="display: none;"> <img src="<?php echo $uri; ?>/images/banner3.png" /></div>
+                <?php for ($i = 0; $i < count($slideshow); $i++){ ?>
+                    <div style="display: none;"> <img src="<?php echo $uri . '/' . $slideshow[$i]['picture']; ?>" title="<?php $slideshow[$i]['title'] ?>" /></div>
+                <?php } ?>
             </div>
             <div id="navi">
               <ul>
-                <li><a href="#"><img src="<?php echo $uri; ?>/images/bullets.png" alt="" border="0" width="12" height="12" style="padding: 0px 1px 0px 1px;" /></a></li>
-                <li><a href="#"><img src="<?php echo $uri; ?>/images/bullets.png" alt="" border="0" width="12" height="12" style="padding: 0px 1px 0px 1px;" /></a></li>
-                <li><a href="#"><img src="<?php echo $uri; ?>/images/bullets.png" alt="" border="0" width="12" height="12" style="padding: 0px 1px 0px 1px;" /></a></li>
+                  <?php for ($i = 0; $i < count($slideshow); $i++){ ?>
+                      <li><a href="#"><img src="<?php echo $uri; ?>/images/bullets.png" alt="" border="0" width="12" height="12" style="padding: 0px 1px 0px 1px;" /></a></li>
+                  <?php } ?>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
+      <?php } ?>
   <!-- End Slider -->
   <!-- Center -->
       <div id="text-up"></div>

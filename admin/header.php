@@ -17,7 +17,7 @@ else
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>صفحه مدیریت سایت سفیران زندگی</title>
+<title>صفحه مدیریت فروشگاه شهرزاد</title>
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">    
 <link rel="stylesheet" type="text/css" href="css/my.css">    
@@ -43,6 +43,18 @@ else
                 </li>
                 <li>
                     <a href="newsList">ویرایش اخبار</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">اسلایدشو</a>
+            <ul>
+                <li>
+                    <a href="addSlide">افزودن اسلایدشو</a>
+                </li>
+                <li>
+                    <a href="slidesList">ویرایش اسلایدشوها</a>
                 </li>
             </ul>
         </li>
