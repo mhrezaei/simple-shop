@@ -475,6 +475,23 @@ function updateOneFieldFromTable($table, $field, $value, $id)
 }
 ######################## Update One Field From Table ########################
 
+######################## Get Setting ########################
+function getSetting($slug)
+{
+    // SELECT * FROM `setting` WHERE `slug` LIKE 'site_title'
+    $setting = DatabaseHandler::GetRow("SELECT * FROM `setting` WHERE `slug` = '" . $slug . "';");
+    if($setting)
+    {
+        return $setting['value'];
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get Setting ########################
+
+
 
 
 

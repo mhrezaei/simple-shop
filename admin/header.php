@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config/config.php';
+require_once '../php/fn.portal.php';
 
 $cm = DatabaseHandler::GetAll("SELECT * FROM `comments` WHERE `status` = 1 ;");
 if($cm)
@@ -17,7 +18,7 @@ else
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>صفحه مدیریت فروشگاه شهرزاد</title>
+<title>صفحه مدیریت <?php echo getSetting('site_title'); ?></title>
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">    
 <link rel="stylesheet" type="text/css" href="css/my.css">    
@@ -33,7 +34,7 @@ else
 
 <nav id="menu-wrap">    
     <ul id="menu">
-        <li><a href="http://www.safirezendegi.com/" target="_blank">صفحه اصلی سایت</a></li>
+        <li><a href="<?php echo $uri; ?>" target="_blank">صفحه اصلی سایت</a></li>
 
         <li>
             <a href="#">اخبار</a>
