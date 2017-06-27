@@ -61,13 +61,16 @@ else
         </li>
         
         <li>
-            <a href="#">طرح ها</a>
+            <a href="#">محصولات</a>
             <ul>
                 <li>
-                    <a href="addPlans">افزودن طرح</a>
+                    <a href="addProduct">افزودن محصول</a>
                 </li>
                 <li>
-                    <a href="planList">ویرایش طرح ها</a>
+                    <a href="productsList">لیست محصولات</a>
+                </li>
+                <li>
+                    <a href="categoriesList">مدیریت دسته بندی ها</a>
                 </li>
             </ul>
         </li>

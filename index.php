@@ -3,82 +3,50 @@ include_once 'config/config.php';
 
 include 'header.php';
 
-$slideshow = DatabaseHandler::GetAll("SELECT * FROM `slideshow` LIMIT 5; ");
-//index
-if(isset($_GET['login']))
-{
-    if($_GET['login'] == 'false')
-    {
-        $x = 1;
-    }
-}
+include 'slider.php';
+
+$categories = DatabaseHandler::GetAll("SELECT * FROM `categories` WHERE `status` = 1 ");
+
 ?>
-<script type="text/javascript" src="<?php echo $uri; ?>/script/slider.js"></script>
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-        $("#navi ul").tabs("#panes > div", {
-        effect: 'fade', 
-        fadeOutSpeed: 300, 
-        rotate: true
-        }).slideshow({ 
-            autoplay: true, 
-            interval: 6000 
-        }); 
-    });
- </script>
-  <!-- Slider -->
-<?php if (count($slideshow)){ ?>
-  <div class="up"></div>
-  <div class="center">
-    <div class="home-slider home-left-slider home-full-slider">
-      <div class="inner">
-        <div class="slide">
-          <div id="feature">
-            <div id="panes">
-                <?php for ($i = 0; $i < count($slideshow); $i++){ ?>
-                    <div style="display: none;"> <img src="<?php echo $uri . '/' . $slideshow[$i]['picture']; ?>" title="<?php $slideshow[$i]['title'] ?>" /></div>
-                <?php } ?>
+
+
+<!--<div class="container" style="margin-top: 20px;">-->
+<!---->
+<!--    <div class="col-md-3" style="border: 1px solid red"></div>-->
+<!--    <div class="col-md-9" style="border: 1px solid black"></div>-->
+<!---->
+<!--</div>-->
+
+<div class="container" style="margin-top: 20px;">
+    <div class="col-xs-9">
+        <div id="products" class="row list-group">
+            <?php foreach ($categories as $category){ ?>
+            <div class="item  col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="<?php echo $uri . '/' . $category['picture']; ?>" alt="<?php echo $category['title']; ?>" />
+                    <div class="caption">
+<!--                        <h4 class="group inner list-group-item-heading">--><?php //echo $category['title']; ?><!--</h4>-->
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-xs-12 col-md-12">
+                                <a class="btn btn-success btn-block" href="productsList?catID=<?php echo $category['id']; ?>">مشاهده محصولات</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="navi">
-              <ul>
-                  <?php for ($i = 0; $i < count($slideshow); $i++){ ?>
-                      <li><a href="#"><img src="<?php echo $uri; ?>/images/bullets.png" alt="" border="0" width="12" height="12" style="padding: 0px 1px 0px 1px;" /></a></li>
-                  <?php } ?>
-              </ul>
-            </div>
-          </div>
+            <?php } ?>
         </div>
-      </div>
     </div>
-      <?php } ?>
-  <!-- End Slider -->
-  <!-- Center -->
-      <div id="text-up"></div>
-      <div id="text-center">
-      
-<?php
-     include 'miniAbout.php';
-     include 'news.php';
- ?>
-      
-      <!-- Client -->
-  <div align="right">
-
-      <!-- End Client --> 
-      
-<?php
-
-include 'sidebar.php';
-
- ?>
-      
-  </div>
-      <!-- End Design -->
+    <div class="col-xs-3">
+        <?php
+        include 'lastProducts.php';
+        include 'visitProducts.php';
+        ?>
     </div>
-    <div id="text-down"></div>
-  <!-- End Center -->
-  </div>
-  <div class="down"></div>
+</div>
+
+
+
 
 <?php
 

@@ -444,6 +444,36 @@ function getAllNewsWithstatus($status)
 }
 ######################## Get All News ########################
 
+######################## Get All categories ########################
+function getAllCategoriesWithstatus($status)
+{
+    $categories = DatabaseHandler::GetAll("SELECT * FROM `categories` WHERE `status` = $status ORDER BY `id` DESC;");
+    if($categories)
+    {
+        return $categories;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get All categories ########################
+
+######################## Get All Slide ########################
+function getAllSlideWithstatus()
+{
+    $query = DatabaseHandler::GetAll("SELECT * FROM `slideshow` ORDER BY `id` DESC;");
+    if($query)
+    {
+        return $query;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get All Slide ########################
+
 ######################## Get All Plan ########################
 function getAllPlanWithstatus($status)
 {

@@ -8,8 +8,9 @@ $persianDate = pdate('l d F Y');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>فروشگاه شهرزاد</title>
+<title><?php echo getSetting('site_title'); ?></title>
 <link href="<?php echo $uri; ?>/images/favicon.ico" rel="shortcut icon" type="images/favicon" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
 <link href="<?php echo $uri; ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $uri; ?>/css/slide_style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $uri; ?>/css/orbit.css" rel="stylesheet" type="text/css" media="all" />
@@ -23,21 +24,27 @@ $persianDate = pdate('l d F Y');
 <body class="body">
 
   <!-- Header -->
-<div align="center">
-<div id="header">
-<div class="time">امروز: <?php echo $persianDate; ?></div>
-</div>
-  <div id="menu">
-    <ul>
-      <li><a href="<?php echo $uri; ?>/index" class="subLink">صفحه اصلی</a></li>
-      |
-      <li><a href="<?php echo $uri; ?>/products" class="subLink">محصولات</a></li>
-      |
-      <li><a href="<?php echo $uri; ?>/galleries" class="subLink">گالری تصاویر</a></li>
-      |
-      <li><a href="<?php echo $uri; ?>/about" class="subLink">درباره فروشگاه</a></li>
-      |
-      <li><a href="<?php echo $uri; ?>/contact" class="subLink">تماس باما</a></li>
-    </ul>
-  </div>
+
+
+
+    <div class="container">
+        <img src="images/header.png" alt="<?php echo getSetting('site_title'); ?>"/>
+
+        <div class="menu">
+            <ul>
+                <li><a href="<?php echo $uri; ?>/index" class="subLink">صفحه اصلی</a></li>
+                |
+                <li><a href="<?php echo $uri; ?>/products" class="subLink">محصولات</a></li>
+                |
+                <li><a href="<?php echo $uri; ?>/galleries" class="subLink">گالری تصاویر</a></li>
+                |
+                <li><a href="<?php echo $uri; ?>/about" class="subLink">درباره فروشگاه</a></li>
+                |
+                <li><a href="<?php echo $uri; ?>/contact" class="subLink">تماس باما</a></li>
+            </ul>
+            <p style="float: left; font-size: 14px; color: grey; padding-left: 15px; padding-top: 18px;">امروز: <?php echo $persianDate; ?></p>
+        </div>
+
+    </div>
+
   <!-- End Header -->
