@@ -29,7 +29,10 @@ if(isset($_POST['txtTitle']) &&
     $_POST['txtStock'] > 0 &&
     isset($_POST['txtPrice']) &&
     $_POST['txtPrice'] > 0 &&
-    isset($_FILES['file']))
+    isset($_FILES['file']) &&
+    isset($_POST['txtAbstract']) &&
+    strlen($_POST['txtAbstract']) > 50
+)
 {
     
     if($_FILES['file']['error'] < 1)
@@ -45,8 +48,8 @@ if(isset($_POST['txtTitle']) &&
 
         move_uploaded_file($fileTemp, $u);
 
-        $query = "INSERT INTO `products` (`id`, `title`, `text`, `image`, `visit`, `buy_link`, `status`, `gallery_id`, `created_at`, `category`, `stock`, `price`) 
-VALUES (NULL, '" . $_POST['txtTitle'] . "', '" . htmlCoding($_POST['txtText']) . "', '" . $url . "', '0', '" . $_POST['txtLink'] . "', '1', '0', '" . time() . "', '" . $_POST['txtCat'] . "', '" . $_POST['txtStock'] ."', '" . $_POST['txtPrice'] ."');";
+        $query = "INSERT INTO `products` (`id`, `title`, `text`, `image`, `visit`, `buy_link`, `status`, `gallery_id`, `created_at`, `category`, `stock`, `price`, `abstract`) 
+VALUES (NULL, '" . $_POST['txtTitle'] . "', '" . htmlCoding($_POST['txtText']) . "', '" . $url . "', '0', '" . $_POST['txtLink'] . "', '1', '0', '" . time() . "', '" . $_POST['txtCat'] . "', '" . $_POST['txtStock'] ."', '" . $_POST['txtPrice'] ."', '" . $_POST['txtAbstract'] ."');";
 
         if(DatabaseHandler::Execute($query))
         {
@@ -86,6 +89,12 @@ include 'header.php';
             <input type="text" name="txtTitle" class="txtInput" style="font-family: Tahoma; font-size: 12px; width: 400px;" placeholder="عنوان محصول" />
         </div>
         <div style="clear: both;"></div>
+
+            <div style="width: 120px; float: right; font-family: 'Nassim'; font-size: 16px; line-height: 25px;">چکیده <span style="color: red;">*</span></div>
+            <div style="float: left; width: 800px;">
+                <textarea type="text" name="txtAbstract" class="txtInput" style="font-family: Tahoma; font-size: 12px; width: 400px;" placeholder="چکیده"></textarea>
+            </div>
+            <div style="clear: both;"></div>
 
         <div style="width: 120px; float: right; font-family: 'Nassim'; font-size: 16px; line-height: 25px;">دسته بندی محصول <span style="color: red;">*</span></div>
         <div style="float: left; width: 800px;">

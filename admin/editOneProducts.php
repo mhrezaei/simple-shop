@@ -39,7 +39,10 @@ if(isset($_POST['txtTitle']) &&
     isset($_POST['txtStock']) &&
     $_POST['txtStock'] > 0 &&
     isset($_POST['txtPrice']) &&
-    $_POST['txtPrice'] > 0)
+    $_POST['txtPrice'] > 0 &&
+    isset($_POST['txtAbstract']) &&
+    strlen($_POST['txtAbstract']) > 50
+)
 {
     updateOneFieldFromTable('products', 'title', $_POST['txtTitle'], $product['id']);
     updateOneFieldFromTable('products', 'text', htmlCoding($_POST['txtText']), $product['id']);
@@ -47,6 +50,7 @@ if(isset($_POST['txtTitle']) &&
     updateOneFieldFromTable('products', 'category', $_POST['txtCat'], $product['id']);
     updateOneFieldFromTable('products', 'stock', $_POST['txtStock'], $product['id']);
     updateOneFieldFromTable('products', 'price', $_POST['txtPrice'], $product['id']);
+    updateOneFieldFromTable('products', 'abstract', $_POST['txtAbstract'], $product['id']);
     if(isset($_FILES['file']) && $_FILES['file']['error'] < 1)
     {
         $fileName = $_FILES['file']['name'];
@@ -88,6 +92,12 @@ include 'header.php';
             <input type="text" name="txtTitle" class="txtInput" style="font-family: Tahoma; font-size: 12px; width: 400px;" placeholder="عنوان محصول" value="<?php echo $product['title']; ?>" />
         </div>
         <div style="clear: both;"></div>
+
+            <div style="width: 120px; float: right; font-family: 'Nassim'; font-size: 16px; line-height: 25px;">چکیده <span style="color: red;">*</span></div>
+            <div style="float: left; width: 800px;">
+                <textarea type="text" name="txtAbstract" class="txtInput" style="font-family: Tahoma; font-size: 12px; width: 400px;" placeholder="چکیده"><?php echo $product['abstract']; ?></textarea>
+            </div>
+            <div style="clear: both;"></div>
 
         <div style="width: 120px; float: right; font-family: 'Nassim'; font-size: 16px; line-height: 25px;">دسته بندی محصول <span style="color: red;">*</span></div>
         <div style="float: left; width: 800px;">

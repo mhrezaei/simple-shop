@@ -34,7 +34,7 @@ $persianDate = pdate('l d F Y');
             <ul>
                 <li><a href="<?php echo $uri; ?>/index" class="subLink">صفحه اصلی</a></li>
                 |
-                <li><a href="<?php echo $uri; ?>/products" class="subLink">محصولات</a></li>
+                <li><a href="<?php echo $uri; ?>/productsList" class="subLink">محصولات</a></li>
                 |
                 <li><a href="<?php echo $uri; ?>/galleries" class="subLink">گالری تصاویر</a></li>
                 |
