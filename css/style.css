@@ -63,7 +63,7 @@
 
 .menu ul {
     padding-right: 20px;
-	text-shadow:1px 1px 1px #fff;
+	/*text-shadow:1px 1px 1px #fff;*/
 	padding-top: 18px;
     text-align: right;
     width: 70%;
@@ -762,4 +762,14 @@ hr{
 .list-group-item-text
 {
     margin: 0 0 11px;
+}
+
+.border-radius{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.badge{
+    font-weight: normal !important;
 }

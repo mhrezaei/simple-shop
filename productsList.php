@@ -46,7 +46,7 @@ else
                                     <div class="row">
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead">
-                                                <?php echo $product['price']; ?> تومان</p>
+                                                <?php echo number_format($product['price']); ?> تومان</p>
                                         </div>
                                         <div class="col-xs-12 col-md-6">
                                             <a class="btn btn-success" href="product?id=<?php echo $product['id']; ?>&action=add">خرید</a>
