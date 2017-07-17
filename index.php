@@ -23,7 +23,7 @@ $categories = DatabaseHandler::GetAll("SELECT * FROM `categories` WHERE `status`
             <?php foreach ($categories as $category){ ?>
             <div class="item  col-xs-4 col-lg-4">
                 <div class="thumbnail">
-                    <img class="group list-group-image" src="<?php echo $uri . '/' . $category['picture']; ?>" alt="<?php echo $category['title']; ?>" />
+                    <a href="productsList?catID=<?php echo $category['id']; ?>"> <img class="group list-group-image" src="<?php echo $uri . '/' . $category['picture']; ?>" alt="<?php echo $category['title']; ?>" /></a>
                     <div class="caption">
 <!--                        <h4 class="group inner list-group-item-heading">--><?php //echo $category['title']; ?><!--</h4>-->
                         <div class="row" style="margin-top: 10px;">
