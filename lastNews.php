@@ -1,5 +1,5 @@
 <?php
-$last_news = DatabaseHandler::GetAll("SELECT * FROM `news` ORDER BY `id` DESC LIMIT 10");
+$last_news = DatabaseHandler::GetAll("SELECT * FROM `news` WHERE `status` = 1 ORDER BY `id` DESC LIMIT 10");
 
 if ($last_news){
 
