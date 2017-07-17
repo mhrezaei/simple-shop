@@ -75,17 +75,17 @@ else
             </ul>
         </li>
         
-        <li>
-            <a href="#">گالری تصاویر</a>
-            <ul>
-                <li>
-                    <a href="addGallery">افزودن آلبوم</a>
-                </li>
-                <li>
-                    <a href="galleryList">ویرایش آلبوم ها</a>
-                </li>
-            </ul>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">گالری تصاویر</a>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <a href="addGallery">افزودن آلبوم</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="galleryList">ویرایش آلبوم ها</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </li>-->
         
         <li>
             <a href="#">صفحات اصلی</a>
@@ -93,9 +93,9 @@ else
                 <li>
                     <a href="editPages?id=1">درباره ما</a>
                 </li>
-                <li>
-                    <a href="editPages?id=3">خلاصه درباره ما</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="editPages?id=3">خلاصه درباره ما</a>-->
+<!--                </li>-->
                 <li>
                     <a href="editPages?id=2">تماس باما</a>
                 </li>

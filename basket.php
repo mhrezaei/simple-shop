@@ -15,7 +15,7 @@ if (isset($_GET['action']) and isset($_GET['id']))
 
 include 'header.php';
 
-include 'slider.php';
+//include 'slider.php';
 
 $basket = userBasketData();
 
@@ -173,7 +173,63 @@ $basket = userBasketData();
             <input type="hidden" name="RedirectURL" id="RedirectURL" value="<?php $uri . '/basketProcess'; ?>" />
         </form>
 
+        <script>
+            function basketForm()
+            {
+                $(".contactFinal").html('<img src="images/loading5.gif" alt="loading.gif" style="padding-top: 0px;" />');
+                var name = $("#txtName").val();
+                var email = $("#txtEmail").val();
+                var mobile = $("#txtMobile").val();
+                var address = $("#txtAddress").val();
 
+                if (name.length > 3 && email.length > 3 && mobile.length == 11 && address.length > 10)
+                {
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "ajax/orders.php",
+                        cache: false,
+                        dataType: "json",
+                        data: {tName: name, tEmail: email, tMobile: mobile, tAddress: address}
+                    }).done(function(Data){
+                        if(Data.status == 1)
+                        {
+                            $("#txtName").val('');
+                            $("#txtEmail").val('');
+                            $("#txtTitle").val('');
+                            $("#txtAddress").val('');
+                            $(".contactFinal").html('<img src="images/ok.gif" style="padding-top: 0px;" />&nbsp;<span style="color: green; font-size: 13px;">ثبت سفارش با موفقیت انجام شد. کدپیگیری: ' + Data.tracking + '</span>');
+
+                            $('#Amount').val(Data.price);
+                            $('#ResNum').val(Data.tracking);
+                            setTimeout(function(){
+                                document.SamanPayment.submit();
+                            }, 3000);
+                        }
+                        else if (Data.status == 2)
+                        {
+                            $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">خطایی رخ داده است لطفا دوباره سعی کنید.</span>');
+                        }
+                        else if (Data.status == 3)
+                        {
+                            $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">محصولی در سبد خرید ذخیره نشده است.</span>');
+                        }
+                        else
+                        {
+                            alert('خطای سیستمی رخ داده است.');
+                        }
+                    });
+                }
+                else
+                {
+                    $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">گزینه های ستاره دار را تکمیل نمایید.</span>');
+                }
+            }
+
+            function openOrderForm() {
+                $('#orderForm').slideToggle();
+                $('#btnOpenForm').hide();
+            }
+        </script>
 
 
 <?php

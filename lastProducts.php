@@ -22,7 +22,7 @@ if ($last_product){
             <?php
             foreach ($last_product as $item => $value)
             {
-                echo '<li class="lastProduct"><a href="showProduct?id=' . $value['id'] . '">' . $value['title'] . '</a></li>';
+                echo '<li class="lastProduct"><a href="product?id=' . $value['id'] . '">' . $value['title'] . '</a></li>';
             }
             ?>
         </ul>

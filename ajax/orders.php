@@ -49,4 +49,11 @@ if (isset($_POST['tName']) and isset($_POST['tEmail']) and isset($_POST['tMobile
 
 }
 
+
+if (isset($_POST['aa']))
+{
+    $aa = array('123');
+    echo json_encode($aa);
+}
+
 ?>

@@ -14,7 +14,7 @@ $persianDate = pdate('l d F Y');
 <link href="<?php echo $uri; ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $uri; ?>/css/slide_style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $uri; ?>/css/orbit.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="<?php echo $uri; ?>/script/jquery.js"></script>
+<script type="text/javascript" src="<?php echo $uri; ?>/script/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="<?php echo $uri; ?>/script/jquery.orbit.js"></script>
 <script type="text/javascript" src="<?php echo $uri; ?>/script/frm.validate.js"></script>
 
@@ -37,8 +37,8 @@ $persianDate = pdate('l d F Y');
                 |
                 <li><a href="<?php echo $uri; ?>/productsList" class="subLink">محصولات</a></li>
                 |
-                <li><a href="<?php echo $uri; ?>/galleries" class="subLink">گالری تصاویر</a></li>
-                |
+<!--                <li><a href="--><?php //echo $uri; ?><!--/galleries" class="subLink">گالری تصاویر</a></li>-->
+<!--                |-->
                 <li><a href="<?php echo $uri; ?>/about" class="subLink">درباره فروشگاه</a></li>
                 |
                 <li><a href="<?php echo $uri; ?>/contact" class="subLink">تماس باما</a></li>

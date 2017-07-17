@@ -41,7 +41,7 @@ else
                                 <div class="caption">
                                     <a href="product?id=<?php echo $product['id']; ?>" style="font-size: 17px;"> <h4 class="group inner list-group-item-heading">
                                             <?php echo $product['title']; ?></h4></a>
-                                    <p class="group inner list-group-item-text" style="font-size: 15px; text-align: justify;">
+                                    <p class="group inner list-group-item-text" style="font-size: 15px; text-align: justify; height: 75px;">
                                         <?php echo gCharLimit($product['abstract'], 250); ?></p>
                                     <div class="row">
                                         <div class="col-xs-12 col-md-6">

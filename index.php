@@ -41,6 +41,7 @@ $categories = DatabaseHandler::GetAll("SELECT * FROM `categories` WHERE `status`
         <?php
         include 'lastProducts.php';
         include 'visitProducts.php';
+        include 'lastNews.php';
         ?>
     </div>
 </div>
