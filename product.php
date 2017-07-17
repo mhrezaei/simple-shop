@@ -1,19 +1,30 @@
 <?php
 include_once 'config/config.php';
 
-include 'header.php';
-
-include 'slider.php';;
-
-if (isset($_GET['catID']) and $_GET['catID'] > 0)
+if (isset($_GET['id']) and $_GET['id'] > 0)
 {
-    $catID = $_GET['catID'];
-    $products = DatabaseHandler::GetAll("SELECT * FROM `products` WHERE `category` = $catID AND `status` = 1");
+    $id = $_GET['id'];
+    $product = DatabaseHandler::GetRow("SELECT * FROM `products` WHERE `id` = $id AND `status` = 1");
+
+    if (!$product)
+    {
+        header('location: ' . $uri);
+        exit;
+    }
+    else
+    {
+        $product['cat'] = DatabaseHandler::GetRow("SELECT * FROM `categories` WHERE `id` = " . $product['category']);
+    }
 }
 else
 {
-    $products = DatabaseHandler::GetAll("SELECT * FROM `products` WHERE `status` = 1");
+    header('location: ' . $uri);
+    exit;
 }
+
+include 'header.php';
+
+include 'slider.php';
 
 ?>
 
@@ -29,9 +40,37 @@ else
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">محصولات</h3>
+                <h3 class="panel-title">توضیحات محصول</h3>
             </div>
             <div class="panel-body">
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-4" style="height: 450px;">
+                        <div style="height: 170px; border: 1px solid #F8F9F9;">
+                            <div style="padding: 15px;">
+                                <?php echo $product['title']; ?>
+                            </div>
+                            <div style="font-size: 12px; padding: 15px; padding-top: 5px;">
+                                دسته بندی:
+                                <a href="productsList?catID=<?php echo $product['cat']['id']; ?>"><?php echo $product['cat']['title']; ?></a>
+                            </div>
+
+                            <div style="font-size: 14px; padding: 15px; padding-top: 35px; color: grey;">
+                                قیمت
+                                <br>
+                                <span style="font-size: 16px; color: #0e0e0e;"><?php echo number_format($product['price']); ?> تومان</span>
+                            </div>
+                        </div>
+                        <div style="height: 225px; border: 1px solid #F8F9F9; background: #F8F9F9;">
+                            <button class="btn btn-success btn-block">اضافه به سبد خرید</button>
+                            <button class="btn btn-info btn-block">جزئیات محصول</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <img class="group list-group-image" src="<?php echo $uri . '/' . $product['image']; ?>" alt="<?php echo $category['title']; ?>" style="max-height: 440px; max-width: 98%; margin-top: 5px;" />
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
                 <div id="products" class="row list-group">
                     <?php if ($products){ ?>
                     <?php foreach ($products as $product){ ?>

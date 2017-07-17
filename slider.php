@@ -15,6 +15,7 @@
 </script>
 
 <div class="container" style="margin-top: 20px;">
+    <div class="col-xs-12">
 
     <!-- Slider -->
     <?php if (count($slideshow)){ ?>
@@ -46,4 +47,5 @@
     <?php } ?>
     <!-- End Slider -->
 
+</div>
 </div>

@@ -28,6 +28,7 @@ $persianDate = pdate('l d F Y');
 
 
     <div class="container">
+        <div class="col-xs-12">
         <img src="images/header.png" alt="<?php echo getSetting('site_title'); ?>"/>
 
         <div class="menu">
@@ -44,7 +45,7 @@ $persianDate = pdate('l d F Y');
             </ul>
             <p style="float: left; font-size: 14px; color: grey; padding-left: 15px; padding-top: 18px;">امروز: <?php echo $persianDate; ?></p>
         </div>
-
+        </div>
     </div>
 
   <!-- End Header -->
