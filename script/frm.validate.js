@@ -454,3 +454,39 @@ function contactUs()
             }
         });
 }
+
+function basketForm()
+{
+    $(".contactFinal").html('<img src="images/loading5.gif" alt="loading.gif" style="padding-top: 0px;" />');
+    var name = $("#txtName").val();
+    var email = $("#txtEmail").val();
+    var mobile = $("#txtMobile").val();
+    var address = $("#txtAddress").val();
+
+    if (name.length > 3 && email.length > 3 && mobile.length == 11 && address.length > 10)
+    {
+        $.ajax({
+            type: "POST",
+            url: "ajax/orders.php",
+            cache: false,
+            dataType: "json",
+            data: {
+                tName: name,
+                tEmail: email,
+                tMobile: mobile,
+                tAddress: address
+            }
+        }).done(function (response) {
+            console.log(response);
+        });
+    }
+    else
+    {
+        $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">گزینه های ستاره دار را تکمیل نمایید.</span>');
+    }
+}
+
+function openOrderForm() {
+    $('#orderForm').slideToggle();
+    $('#btnOpenForm').hide();
+}

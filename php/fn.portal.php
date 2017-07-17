@@ -594,6 +594,70 @@ function userBasketCheck()
 }
 ######################## User Basket Check ########################
 
+######################## User Basket Data ########################
+function userBasketData()
+{
+    if (isset($_SESSION['basket']))
+    {
+        return $_SESSION['basket'];
+    }
+    else
+    {
+        false;
+    }
+}
+######################## User Basket Data ########################
+
+######################## find product with id ########################
+function findProduct($id)
+{
+    if (!is_numeric($id) or $id < 1)
+        return false;
+
+    $product = DatabaseHandler::GetRow("SELECT * FROM `products` WHERE `id` = $id");
+
+    if ($product)
+    {
+        return $product;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## find product with id ########################
+
+######################## find orders with traking number ########################
+function findOrders($tracking)
+{
+    if (!is_numeric($tracking) or $tracking < 1)
+        return false;
+
+    $order = DatabaseHandler::GetRow("SELECT * FROM `orders` WHERE `tracking` = $tracking");
+
+    if ($order)
+    {
+        return $order;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## find orders with traking number ########################
+
+######################## format basket ########################
+function formatBasket()
+{
+    if (isset($_SESSION['basket']))
+    {
+        unset($_SESSION['basket']);
+    }
+}
+######################## format basket ########################
+
+
+
 
 
 
