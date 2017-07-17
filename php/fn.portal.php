@@ -523,6 +523,79 @@ function getSetting($slug)
 
 
 
+######################## User Basket Manage ########################
+function userBasketManage($action, $product_id, $count = 1)
+{
+    if (isset($_SESSION['basket']))
+    {
+        $basket = $_SESSION['basket'];
+    }
+    else
+    {
+        $basket = array();
+    }
+
+
+    if ($action == 'add')
+    {
+        if (isset($basket[$product_id]))
+        {
+            $basket[$product_id] = $basket[$product_id] + $count;
+        }
+        else
+        {
+            $basket[$product_id] = $count;
+        }
+    }
+    elseif ($action == 'delete')
+    {
+        if (isset($basket[$product_id]))
+        {
+            unset($basket[$product_id]);
+        }
+    }
+    elseif ($action == 'remove')
+    {
+        if (isset($basket[$product_id]))
+        {
+            if ($basket[$product_id] <= 1)
+            {
+                unset($basket[$product_id]);
+            }
+            else
+            {
+                if ($basket[$product_id] <= $count)
+                {
+                    unset($basket[$product_id]);
+                }
+                else
+                {
+                    $basket[$product_id] = $basket[$product_id] - $count;
+                }
+            }
+        }
+    }
+
+    $_SESSION['basket'] = $basket;
+}
+######################## User Basket Manage ########################
+
+######################## User Basket Check ########################
+function userBasketCheck()
+{
+    if (isset($_SESSION['basket']))
+    {
+        return count($_SESSION['basket']);
+    }
+    else
+    {
+        return 0;
+    }
+}
+######################## User Basket Check ########################
+
+
+
 
 
 

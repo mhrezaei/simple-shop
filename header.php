@@ -42,6 +42,14 @@ $persianDate = pdate('l d F Y');
                 <li><a href="<?php echo $uri; ?>/about" class="subLink">درباره فروشگاه</a></li>
                 |
                 <li><a href="<?php echo $uri; ?>/contact" class="subLink">تماس باما</a></li>
+                |
+                <li><a href="<?php echo $uri; ?>/basket" class="subLink border-radius" style="border: 1px solid #FA24CF; padding: 2px; padding-left: 5px;">
+                        <span class="glyphicon glyphicon-gift"></span>
+                        سبدخرید
+                        <?php if (userBasketCheck() > 0){ ?>
+                            <span class="badge"><?php echo userBasketCheck(); ?></span>
+                        <?php } ?>
+                    </a></li>
             </ul>
             <p style="float: left; font-size: 14px; color: grey; padding-left: 15px; padding-top: 18px;">امروز: <?php echo $persianDate; ?></p>
         </div>

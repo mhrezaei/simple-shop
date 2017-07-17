@@ -14,6 +14,18 @@ if (isset($_GET['id']) and $_GET['id'] > 0)
     else
     {
         $product['cat'] = DatabaseHandler::GetRow("SELECT * FROM `categories` WHERE `id` = " . $product['category']);
+
+        // add to basket
+        if (isset($_GET['action']))
+        {
+            $action = $_GET['action'];
+
+            if ($action == 'add')
+            {
+                userBasketManage('add', $id, 1);
+                header('location: ' . $uri . '/product?id=' . $id . '&msg=1');
+            }
+        }
     }
 }
 else
@@ -61,55 +73,30 @@ include 'slider.php';
                                 <span style="font-size: 16px; color: #0e0e0e;"><?php echo number_format($product['price']); ?> تومان</span>
                             </div>
                         </div>
-                        <div style="height: 225px; border: 1px solid #F8F9F9; background: #F8F9F9;">
-                            <button class="btn btn-success btn-block">اضافه به سبد خرید</button>
-                            <button class="btn btn-info btn-block">جزئیات محصول</button>
+                        <div style="height: 185px; border: 1px solid #F8F9F9; background: #F8F9F9; padding: 25px;">
+                            <a class="btn btn-success btn-block" href="<?php echo $uri; ?>/product?id=<?php echo $product['id']; ?>&action=add">اضافه به سبد خرید</a>
+                            <a href="<?php echo $product['buy_link']; ?>" class="btn btn-info btn-block" target="_blank">جزئیات محصول</a>
+
+                            <?php if (isset($_GET['msg']) and $_GET['msg'] == 1){ ?>
+                            <div class="alert alert-success" style="margin-top: 10px; font-weight: normal; font-size: 14px;">محصول با موفقیت به سبد خرید اضافه شد.</div>
+                            <?php } ?>
+
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <img class="group list-group-image" src="<?php echo $uri . '/' . $product['image']; ?>" alt="<?php echo $category['title']; ?>" style="max-height: 440px; max-width: 98%; margin-top: 5px;" />
+                        <img class="group list-group-image" src="<?php echo $uri . '/' . $product['image']; ?>" alt="<?php echo $category['title']; ?>" style="max-height: 350px; max-width: 98%; margin-top: 5px;" />
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
-                <div id="products" class="row list-group">
-                    <?php if ($products){ ?>
-                    <?php foreach ($products as $product){ ?>
-                        <div class="item  col-xs-4 col-lg-4">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="<?php echo $uri . '/' . $product['image']; ?>" alt="<?php echo $category['title']; ?>" />
-                                <div class="caption">
-                                    <a href="product?id=<?php echo $product['id']; ?>" style="font-size: 17px;"> <h4 class="group inner list-group-item-heading">
-                                            <?php echo $product['title']; ?></h4></a>
-                                    <p class="group inner list-group-item-text" style="font-size: 15px; text-align: justify;">
-                                        <?php echo gCharLimit($product['abstract'], 250); ?></p>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-6">
-                                            <p class="lead">
-                                                <?php echo $product['price']; ?> تومان</p>
-                                        </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <a class="btn btn-success" href="product?id=<?php echo $product['id']; ?>&action=add">خرید</a>
-                                            <a class="btn btn-info" href="product?id=<?php echo $product['id']; ?>">جزئیات</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php }else{ ?>
-                            <div class="alert alert-warning" style="width: 50%; margin: 0 auto; font-size: 15px;">در این شاخه محصولی ثبت نشده است.</div>
-                    <?php } ?>
+                <div class="row" style="padding: 30px; padding-right: 50px; padding-left: 50px;">
+                    <?php echo htmlCoding($product['text'], 2); ?>
                 </div>
-            </div>
-        </div>
-
-    </div>
-<!--    <div class="col-xs-3">-->
 <!--        --><?php
 //        include 'lastProducts.php';
 //        include 'visitProducts.php';
 //        ?>
 <!--    </div>-->
+</div>
 </div>
 
 

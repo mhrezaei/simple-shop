@@ -442,15 +442,15 @@ function contactUs()
                 $txtEmail = $("#txtEmail").val('');
                 $txtTitle = $("#txtTitle").val('');
                 $txtComment = $("#taComment").val('');
-                $(".contactFinal").html('<img src="images/ok.gif" style="padding-top: 9px;" />&nbsp;<span style="color: green; font-size: 13px;">فرم شما با موفقیت ارسال گردید، در صورت نیاز به آن پاسخ داده خواهد شد.</span>');
+                $(".contactFinal").html('<img src="images/ok.gif" style="padding-top: 0px;" />&nbsp;<span style="color: green; font-size: 13px;">فرم شما با موفقیت ارسال گردید، در صورت نیاز به آن پاسخ داده خواهد شد.</span>');
             }
             else if(Data == '2')
             {
-                $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 9px;" />&nbsp;<span style="color: red; font-size: 13px;">خطایی در ثبت فرم شما رخ داده است، در صورت تکرار به بخش پشتیبانی اطلاع دهید.</span>');
+                $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">خطایی در ثبت فرم شما رخ داده است، در صورت تکرار به بخش پشتیبانی اطلاع دهید.</span>');
             }
             else
             {
-                $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 9px;" />&nbsp;<span style="color: red; font-size: 13px;">موارد مشخص شده در فرم به درستی تکمیل نشده است.</span>');
+                $(".contactFinal").html('<img src="images/no.gif" style="padding-top: 0px;" />&nbsp;<span style="color: red; font-size: 13px;">موارد مشخص شده در فرم به درستی تکمیل نشده است.</span>');
             }
         });
 }
