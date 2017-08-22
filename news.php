@@ -1,40 +1,61 @@
 <?php
-     $news = DatabaseHandler::GetAll("SELECT * FROM `news` WHERE `status` = 1 ORDER BY `id` DESC LIMIT 0 , 5");
-     if($news)
-     {
-         
+include_once 'config/config.php';
+
+if (isset($_GET['id']) and $_GET['id'] > 0)
+{
+    $id = $_GET['id'];
+    $news = DatabaseHandler::GetRow("SELECT * FROM `news` WHERE `id` = $id AND `status` = 1");
+
+    if (!$news)
+    {
+        header('location: ' . $uri);
+        exit;
+    }
+}
+else
+{
+    header('location: ' . $uri);
+    exit;
+}
+
+include 'header.php';
+
+include 'slider.php';
+
 ?>
-<div class="left-up"></div>
-<div class="left-center2">
-    <img src="images/line2.png" class="titr" />
-    <p class="indexContent">
-        <br />
-        <br />
+
+
+<!--<div class="container" style="margin-top: 20px;">-->
+<!---->
+<!--    <div class="col-md-3" style="border: 1px solid red"></div>-->
+<!--    <div class="col-md-9" style="border: 1px solid black"></div>-->
+<!---->
+<!--</div>-->
+
+<div class="container" style="margin-top: 20px;">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo htmlCoding($news['title'], 2); ?></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" style="padding: 30px; padding-right: 50px; padding-left: 50px;">
+                    <?php echo htmlCoding($news['text'], 2); ?>
+                </div>
+<!--        --><?php
+//        include 'lastProducts.php';
+//        include 'visitProducts.php';
+//        ?>
+<!--    </div>-->
+</div>
+</div>
+
+
+
+
 <?php
-         
-         for($i = 0; $i < count($news); $i++)
-         {
-             $news[$i]['date'] = pdate('d F Y', $news[$i]['date']);
+
+include 'footer.php';
+
 ?>
 
-<!-- News -->
-
-        <b>
-            <a href="showNews?nid=<?php echo $news[$i]['id']; ?>" style="font-size: 11px;">» <?php echo $news[$i]['title']; ?></a></b>
-            <span style="color: black; font-size: 10px;">(<?php echo $news[$i]['date']; ?>)</span>
-            <br>
-
-<?php      
-         }
-         
-?>
-</p>
-              </div>
-      <div class="left-down">
-        <div style="color: black; font-family: Tahoma; font-size: 11px; float: left; margin-left: 20px;"><a href="newsArchive">آرشیو اخبار...</a></div>
-      </div>
-      <!-- End News -->
-<?php
-         
-     }
- ?>

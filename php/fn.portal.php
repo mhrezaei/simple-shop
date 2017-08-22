@@ -444,6 +444,36 @@ function getAllNewsWithstatus($status)
 }
 ######################## Get All News ########################
 
+######################## Get All categories ########################
+function getAllCategoriesWithstatus($status)
+{
+    $categories = DatabaseHandler::GetAll("SELECT * FROM `categories` WHERE `status` = $status ORDER BY `id` DESC;");
+    if($categories)
+    {
+        return $categories;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get All categories ########################
+
+######################## Get All Slide ########################
+function getAllSlideWithstatus()
+{
+    $query = DatabaseHandler::GetAll("SELECT * FROM `slideshow` ORDER BY `id` DESC;");
+    if($query)
+    {
+        return $query;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get All Slide ########################
+
 ######################## Get All Plan ########################
 function getAllPlanWithstatus($status)
 {
@@ -474,6 +504,160 @@ function updateOneFieldFromTable($table, $field, $value, $id)
     
 }
 ######################## Update One Field From Table ########################
+
+######################## Get Setting ########################
+function getSetting($slug)
+{
+    // SELECT * FROM `setting` WHERE `slug` LIKE 'site_title'
+    $setting = DatabaseHandler::GetRow("SELECT * FROM `setting` WHERE `slug` = '" . $slug . "';");
+    if($setting)
+    {
+        return $setting['value'];
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## Get Setting ########################
+
+
+
+######################## User Basket Manage ########################
+function userBasketManage($action, $product_id, $count = 1)
+{
+    if (isset($_SESSION['basket']))
+    {
+        $basket = $_SESSION['basket'];
+    }
+    else
+    {
+        $basket = array();
+    }
+
+
+    if ($action == 'add')
+    {
+        if (isset($basket[$product_id]))
+        {
+            $basket[$product_id] = $basket[$product_id] + $count;
+        }
+        else
+        {
+            $basket[$product_id] = $count;
+        }
+    }
+    elseif ($action == 'delete')
+    {
+        if (isset($basket[$product_id]))
+        {
+            unset($basket[$product_id]);
+        }
+    }
+    elseif ($action == 'remove')
+    {
+        if (isset($basket[$product_id]))
+        {
+            if ($basket[$product_id] <= 1)
+            {
+                unset($basket[$product_id]);
+            }
+            else
+            {
+                if ($basket[$product_id] <= $count)
+                {
+                    unset($basket[$product_id]);
+                }
+                else
+                {
+                    $basket[$product_id] = $basket[$product_id] - $count;
+                }
+            }
+        }
+    }
+
+    $_SESSION['basket'] = $basket;
+}
+######################## User Basket Manage ########################
+
+######################## User Basket Check ########################
+function userBasketCheck()
+{
+    if (isset($_SESSION['basket']))
+    {
+        return count($_SESSION['basket']);
+    }
+    else
+    {
+        return 0;
+    }
+}
+######################## User Basket Check ########################
+
+######################## User Basket Data ########################
+function userBasketData()
+{
+    if (isset($_SESSION['basket']))
+    {
+        return $_SESSION['basket'];
+    }
+    else
+    {
+        false;
+    }
+}
+######################## User Basket Data ########################
+
+######################## find product with id ########################
+function findProduct($id)
+{
+    if (!is_numeric($id) or $id < 1)
+        return false;
+
+    $product = DatabaseHandler::GetRow("SELECT * FROM `products` WHERE `id` = $id");
+
+    if ($product)
+    {
+        return $product;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## find product with id ########################
+
+######################## find orders with traking number ########################
+function findOrders($tracking)
+{
+    if (!is_numeric($tracking) or $tracking < 1)
+        return false;
+
+    $order = DatabaseHandler::GetRow("SELECT * FROM `orders` WHERE `tracking` = $tracking");
+
+    if ($order)
+    {
+        return $order;
+    }
+    else
+    {
+        return false;
+    }
+}
+######################## find orders with traking number ########################
+
+######################## format basket ########################
+function formatBasket()
+{
+    if (isset($_SESSION['basket']))
+    {
+        unset($_SESSION['basket']);
+    }
+}
+######################## format basket ########################
+
+
+
 
 
 

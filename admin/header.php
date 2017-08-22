@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config/config.php';
+require_once '../php/fn.portal.php';
 
 $cm = DatabaseHandler::GetAll("SELECT * FROM `comments` WHERE `status` = 1 ;");
 if($cm)
@@ -17,7 +18,7 @@ else
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>صفحه مدیریت فروشگاه شهرزاد</title>
+<title>صفحه مدیریت <?php echo getSetting('site_title'); ?></title>
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">    
 <link rel="stylesheet" type="text/css" href="css/my.css">    
@@ -33,7 +34,7 @@ else
 
 <nav id="menu-wrap">    
     <ul id="menu">
-        <li><a href="http://www.safirezendegi.com/" target="_blank">صفحه اصلی سایت</a></li>
+        <li><a href="<?php echo $uri; ?>" target="_blank">صفحه اصلی سایت</a></li>
 
         <li>
             <a href="#">اخبار</a>
@@ -60,28 +61,31 @@ else
         </li>
         
         <li>
-            <a href="#">طرح ها</a>
+            <a href="#">محصولات</a>
             <ul>
                 <li>
-                    <a href="addPlans">افزودن طرح</a>
+                    <a href="addProduct">افزودن محصول</a>
                 </li>
                 <li>
-                    <a href="planList">ویرایش طرح ها</a>
+                    <a href="productsList">لیست محصولات</a>
+                </li>
+                <li>
+                    <a href="categoriesList">مدیریت دسته بندی ها</a>
                 </li>
             </ul>
         </li>
         
-        <li>
-            <a href="#">گالری تصاویر</a>
-            <ul>
-                <li>
-                    <a href="addGallery">افزودن آلبوم</a>
-                </li>
-                <li>
-                    <a href="galleryList">ویرایش آلبوم ها</a>
-                </li>
-            </ul>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">گالری تصاویر</a>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <a href="addGallery">افزودن آلبوم</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="galleryList">ویرایش آلبوم ها</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </li>-->
         
         <li>
             <a href="#">صفحات اصلی</a>
@@ -89,9 +93,9 @@ else
                 <li>
                     <a href="editPages?id=1">درباره ما</a>
                 </li>
-                <li>
-                    <a href="editPages?id=3">خلاصه درباره ما</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="editPages?id=3">خلاصه درباره ما</a>-->
+<!--                </li>-->
                 <li>
                     <a href="editPages?id=2">تماس باما</a>
                 </li>

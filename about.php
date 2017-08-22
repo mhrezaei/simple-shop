@@ -17,30 +17,25 @@ include 'header.php';
 
 ?>
 
-  <!-- Center -->
-      <div class="up"></div>
-      <div class="center registerPage">
-      <!-- Information -->
-      <br />
-      <table width="800" align="center" dir="rtl">
-            <tr>
-                <td colspan="3" width="100%" height="60" align="right" valign="middle" dir="rtl"><span class="formHead"><?php echo $page['title']; ?></span></td>
-            </tr>
-            <tr>
-                <td colspan="3" width="100%" align="justify" valign="middle" dir="rtl">
-                    <div class="pageContent">
-                        <?php echo $page['text']; ?>
-</p><br><br>
+<div class="container" style="margin-top: 20px;">
+    <div class="col-xs-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $page['title']; ?></h3>
+            </div>
+            <div class="panel-body" style="padding: 30px; line-height: 1.2;">
+                <?php echo $page['text']; ?>
+            </div>
+        </div>
 
-
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-      <!-- End Information -->
-      </div>
-      <div class="down"></div>
+    </div>
+        <div class="col-xs-3">
+            <?php
+            include 'lastProducts.php';
+            include 'visitProducts.php';
+            ?>
+        </div>
+</div>
       
 <?php
 

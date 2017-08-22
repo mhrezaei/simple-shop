@@ -1,22 +1,5 @@
-<?php
-
-//footer
-
-?>
-
-  <!-- Footer -->
-      <div class="up"></div>
-       <div class="center">
-         <div id="footer">
-             <span class="style1">کلیه حقوق مادی و معنوی این وب سایت متعلق به 
-                <a href="http://safirezendegi.com"><b>انجمن سفیران زندگی</b></a>
-                          می باشد. کپی پرداری از مطالب آن با ذکرمنبع بلامانع است. 
-         <br />
-         <a href="http://yasnateam.com" target="_blank">طراحی شده توسط گروه یسنا</a></span> 
-        </div>      
-       </div>
-      <div class="down"></div><br />
-  <!-- End Footer -->
+<div class="container">
+    <div style="margin: 0 auto; text-align: center; font-size: 14px; color: #3906A5;">
+        حقوق مادی و معنوی این برای فروشگاه شهرزاد محفوظ است.
+    </div>
 </div>
-</body>
-</html>
